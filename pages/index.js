@@ -1,5 +1,6 @@
-import fs from "fs/promises";
 import path from "path";
+import * as fs from "fs/promises";
+
 const HomePage = () => {
   return (
     <ul>
@@ -10,14 +11,25 @@ const HomePage = () => {
   );
 };
 
-export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), "data", "dummy-backend.json");
-  const jsonData = await fs.readFile(filePath);
-  const data = JSON.parse(jsonData);
-  return {
-    props: {
-      products: data.products
-    }
-  };
+export async function getStaticProps(context) {
+  // const filePath = path.join(process.cwd(), "data", "dummy-backend.json");
+  // const jsonData = await fs.readFile(filePath);
+  // const data = JSON.parse(jsonData);
+  // if (!data) {
+  //   return {
+  //     redirect: {
+  //       destination: "the/path"
+  //     }
+  //   };
+  // }
+  // if (data.products.length === 0) {
+  //   return { notFound: true };
+  // }
+  // return {
+  //   props: {
+  //     products: data.products
+  //   },
+  //   revalidate: 10
+  // };
 }
 export default HomePage;
